@@ -1,0 +1,201 @@
+%\documentclass[]{beamer}
+%\documentclass[handout]{beamer} 
+\documentclass[aspectratio=169,handout]{beamer}
+%\documentclass[aspectratio=169]{beamer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[french]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{hyperref,eurosym,colortbl}
+\hypersetup{colorlinks=true,linkcolor=gray,urlcolor=gray,pdfpagemode=UseNone}
+\usepackage{graphicx,tikz,ifthen} 
+\usepackage{pgfplots}
+\usepackage{multimedia}
+\usepackage{pgfnodes,pgfarrows,pgfheaps}
+
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{patterns}
+
+
+
+\setbeamertemplate{caption}[numbered]
+\usetheme[]{default}
+\setbeamertemplate{footline}[frame number]
+
+\setbeamercolor{title}{fg=gray}
+\setbeamercolor{frametitle}{fg=gray}
+\setbeamercolor{caption}{fg=gray}
+\setbeamercolor{figurenumber}{fg=gray}
+\setbeamercolor{caption name}{fg=gray}
+\setbeamercolor{item}{fg=gray}
+\setbeamertemplate{itemize subitem}{ \textcolor{gray}{\boldmath $\times$} }
+
+\setbeamercolor{block title}{use=structure,fg=gray,bg=white}
+\setbeamercolor{block body}{use=structure,fg=black,bg=white}
+
+\setbeamertemplate{theorems}[numbered]
+\beamertemplatenavigationsymbolsempty
+\beamertemplatetransparentcovered
+
+\definecolor{grey}{gray}{0.5}
+\definecolor{dockergray}{rgb}{0.11,0.56,0.98}
+\definecolor{onegray}{rgb}{0,0,0.75}
+\definecolor{freegray}{rgb}{0.25,0.41,0.88}
+\definecolor{mygray}{rgb}{0,0.2,0.4}
+
+\definecolor{stabilo}{rgb}{.8242,.8242,.8242}
+\definecolor{dockerblue}{rgb}{0.11,0.56,0.98}
+\definecolor{oneblue}{rgb}{0,0,0.75}
+\definecolor{freeblue}{rgb}{0.25,0.41,0.88}
+\definecolor{myblue}{rgb}{0,0.2,0.4}
+
+\usetikzlibrary{snakes}
+
+
+
+\newtheorem{prop}{Proposition}
+
+
+\newboolean{note}
+%\setboolean{note}{true}
+\setboolean{note}{false}
+
+
+
+\begin{document}
+
+\begin{frame}{Understanding ``$V$ functions''}
+\begin{itemize}
+\item Here we take simple static general equilibrium models and derive the ``$V$ function''
+\item We show that although there is an ``externality'', competitive equilibrium is efficient.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Understanding ``$V$ functions''}{Model}
+\begin{itemize}
+\item Consider a simple consumption labor supply problem, where agent $i$ has preferences $U(c_{i},e_{i})$, and has the budget constraint 
+$$
+c_{i} = w e_{i} + \frac{\Pi}{N}
+$$
+ where $\frac{\Pi}{N}$ is the share of profits 
+ \item There are $N$ agents and they are all the same
+ \item We will focus on symmetric  allocations $e_{j} = e$ $\forall j$
+\item There is a competitive firm with technology $F(N e)$
+\item The consumption good is the num\'eraire
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Understanding ``$V$ functions''}{To do}
+\begin{enumerate}
+\item From firms behaviour, derive equilibrium wage as a function of $Ne$.
+\item Use it to write household $i$ utility as a function $V(e_{i}, e)$, when the wage function is the competitive one. 
+\item Find household $i$ FOC and the equation that defined Walrasian GE
+\item Now take function $V$ and wage function and look for a planner symmetric solution, that would internalise the wage effect. 
+\item Show that this solution is the same than the competitive one. 
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Understanding ``$V$ functions''}{Competitive Equilibrium}
+
+\begin{itemize}
+\item Firm profit:
+$$
+\Pi = F(Ne) - w N e
+$$
+
+\item Firm profit maximisation leads to 
+$$
+F'(N e)=w \mbox{ or equivalently } w=w(N e)
+$$
+
+\item so that 
+$$
+\Pi(Ne) = F(Ne) - w(Ne) N e
+$$
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Understanding ``$V$ functions''}{Competitive Equilibrium}
+
+
+\begin{itemize}
+\item In this setup, one can write household $i$ decision problem using the  following $V$ function: 
+$$
+V(e_{i}, e) = U\left(w(Ne) e_{i} + \frac{\Pi(Ne)}{N},e_{i}\right)
+$$
+\item The individual FOC is 
+$$
+w U_{1} + U_{2} = 0
+$$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Understanding ``$V$ functions''}{Planner Solution using the $V$ function}
+
+\begin{itemize}
+\item Let us now consider the social optimum
+\item We have $V(e, e) = U\left(w(Ne) e + \frac{\Pi(Ne)}{N},e\right)$
+\item Planner FOC is 
+$$
+V_{1}+V_{2}=0
+$$
+\item Note that
+$$
+\frac{\Pi(Ne)}{N} = \frac{F(Ne) - w(Ne)Ne}{N}
+$$
+and
+\begin{align*}
+\frac{\partial\frac{\Pi(Ne)}{N}}{\partial e} &= \frac{1}{N} \left[NF'(Ne) - w \frac{\partial Ne}{\partial e} - \frac{\partial w}{\partial e} Ne\right]\\
+&= \left(F'(Ne) -w\right)  -\frac{\partial w}{\partial e} e
+\end{align*}
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Understanding ``$V$ functions''}{Planner Solution using the $V$ function}
+
+\begin{itemize}
+\item For the Planner:
+$$
+V_{1} = w U_{1} + U_{2}
+$$
+and
+$$
+V_{2} = U_{1} \left[\frac{\partial w}{\partial e} e + \left(F'(Ne) -w\right) -\frac{\partial w}{\partial e} e\right]
+$$
+\item Because $F'(N e)=w$, this implies 
+$$
+V_{2} = 0
+$$
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Understanding ``$V$ functions''}{Planner Solution using the $V$ function}
+
+\begin{itemize}
+\item Planner FOC is  therefore
+$$
+V_{1}= w U_{1} + U_{2}=0
+$$
+\item So that we are back to the competitive equilibrium condition. 
+\item As we see, the actions of the others have an impact on one's payoff $V$, but nevertheless there are no inefficiencies at the Walrasian equilibrium. 
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\end{document}
+
+ 
+
+
