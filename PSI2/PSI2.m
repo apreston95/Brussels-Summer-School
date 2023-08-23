@@ -191,27 +191,6 @@ xy=axis;
 axis([1948 2022 xy(3) xy(4)]);
 pbaspect([2 1 1])
 if pprint==1;print -depsc2 UShourspc;end
-% ll=legend('$\pi$','$\ell$');
-% set(ll,'FontName','Times','FontSize',32,'interpreter', 'latex')
-% set(ll,'color','none');
-
-% figure
-% plot(period,sp,'linewidth',4,'color',rgb('darkgrey'))
-% xlabel('Periodicity in quarters','FontName','Times','FontSize',18)
-% ylabel('Share of total variance','FontName','Times','FontSize',18)
-% set(gca,'FontName','Times','FontSize',18)
-% 
-% figure
-% plot(period(4:end),sp(4:end),'linewidth',4,'color',rgb('darkgrey'))
-% xlabel('Periodicity in quarters','FontName','Times','FontSize',18)
-% ylabel('Share of total variance','FontName','Times','FontSize',18)
-% set(gca,'FontName','Times','FontSize',18)
-% 
-% figure
-% plot(period(2:end),sp(2:end),'linewidth',4,'color',rgb('darkgrey'))
-% xlabel('Periodicity in quarters','FontName','Times','FontSize',18)
-% ylabel('Share of total variance','FontName','Times','FontSize',18)
-% set(gca,'FontName','Times','FontSize',18)
 
 
 figure
