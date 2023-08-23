@@ -282,9 +282,7 @@ end
 fprintf('\n');
 
 
-% disp('     share   period      freq     index');
-% disp([-a' period(b)' omega(b)' b']);
-% 
+
 
 
 %%
@@ -324,92 +322,7 @@ end
 
 
 
-%%
-% 
-% % deviations from the 1st contributor
-% 
-% varfit1= beta(T)*X(:,T);
-% for j=1
-%     varfit1=varfit1 + beta(2*b(j)-1)*X(:,2*b(j)-1)+beta(2*b(j))*X(:,2*b(j));
-% end
-% 
-% figure;
-% plot(ddate,var,'linewidth',4,'color',rgb('black'))
-% hold on
-% plot(ddate,varfit1,'linewidth',8,'color',rgb('darkgrey'))
-% hold off
-% eval(['title('' first contibutor'');']);
-% % xlabel('Time','FontName','Times','FontSize',12)
-% ylabel('log','FontName','Times','FontSize',12)
-% set(gca,'FontName','Times','FontSize',12)
-% 
-% 
-% var2=(var-varfit1)*100;
-% 
-% varfit2= zeros(T,1);
-% for j=3:5
-%     varfit2=varfit2 + (beta(2*b(j)-1)*X(:,2*b(j)-1)+beta(2*b(j))*X(:,2*b(j)))*100;
-% end
-% 
-% figure;
-% plot(ddate,var2,'linewidth',4,'color',rgb('black'))
-% hold on
-% plot(ddate,varfit2,'linewidth',8,'color',rgb('darkgrey'))
-% hold off
-% title(' XXX');
-% % xlabel('Time','FontName','Times','FontSize',12)
-% ylabel('% deviations from first contributor','FontName','Times','FontSize',12)
-% set(gca,'FontName','Times','FontSize',12)
 
-%% Band pass filter
-% 
-% % 6-32Q : j=9-48
-% varfit632= zeros(T,1);
-% for j=9:48
-%     varfit632=varfit632 + (beta(2*j-1)*X(:,2*j-1)+beta(2*j)*X(:,2*j))*100;
-% end
-% 
-% figure
-% plot_nber(varfit632,dstart,dend);
-% xy=axis;
-% axis([1948 2022 xy(3) xy(4)]);
-% pbaspect([2 1 1])
-% if pprint==1;print -depsc2 BP632;end
-% 
-% varhp=(var(samp)-hpfilter(var(samp),1600))*100;
-% 
-% % figure
-% % plot([varhp varfit632])
-% figure
-% plot_nber_2series(varhp,varfit632,dstart,dend,'HP','BP(6,32)','NorthEast');
-% xy=axis;
-% axis([1948 2022 xy(3) xy(4)]);
-% pbaspect([2 1 1])
-% if pprint==1;print -depsc2 BP632HP;end
-% 
-% 
-% % 20-50Q : j=6-12
-% varfit2050= zeros(T,1);
-% for j=[6:14]
-% % for j=[6]
-%     varfit2050=varfit2050 + (beta(2*j-1)*X(:,2*j-1)+beta(2*j)*X(:,2*j))*100;
-% end
-% 
-% figure
-% plot_nber(varfit2050,dstart,dend);
-% xy=axis;
-% axis([1948 2022 xy(3) xy(4)]);
-% pbaspect([2 1 1])
-% if pprint==1;print -depsc2 BP2050;end
-% 
-% figure
-% plot_nber_2series(varhp,varfit2050,dstart,dend,'HP','BP(20,50)','NorthEast');
-% xy=axis;
-% axis([1948 2022 xy(3) xy(4)]);
-% pbaspect([2 1 1])
-% if pprint==1;print -depsc2 BP2050HP;end
-% 
-% 
 
 %% AR(1)
 
@@ -469,6 +382,7 @@ set(gca,'FontName','Times','FontSize',14)
 axis([2 300 -Inf Inf])
 pbaspect([2 1 1])
 if pprint==1;print -dpng SpectrumAR1;end
+
 
 
 
