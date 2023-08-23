@@ -265,7 +265,7 @@ fprintf('\n');
 
 
 %%
-for nfirst=[1:9 20 30 40]
+for nfirst=[1:9 20 30 40 80]
 
 varfit= beta(T)*X(:,T);
 for j=1:nfirst
@@ -332,6 +332,7 @@ for j=1:T/2
     omega(j)=2*pi*j/T;
 end
 period=2*pi./omega;
+freq = 1./period;
 
 for j=1:T/2
     for t=1:T
@@ -353,15 +354,25 @@ sp(j)= (std(beta(2*j-1)*X(:,2*j-1))/svar)^2;
 
 sp=100*sp;
 
+sp_analytical =  (sigma^2) ./ abs(1 - rho * exp(-2i * pi * freq)).^2;
+% 
+% figure
+% bar(period(1:end),sp(1:end),'linewidth',8,'edgecolor',rgb('darkgrey'),'facecolor',rgb('darkgrey'),'barwidth',1)
+% xlabel('Periodicity in quarters','FontName','Times','FontSize',14,'interpreter','latex')
+% ylabel('Share of total variance (\%)','FontName','Times','FontSize',14,'interpreter','latex')
+% set(gca,'FontName','Times','FontSize',14)
+% axis([2 300 -Inf Inf])
+% pbaspect([2 1 1])
+
+
 figure
-bar(period(1:end),sp(1:end),'linewidth',8,'edgecolor',rgb('darkgrey'),'facecolor',rgb('darkgrey'),'barwidth',1)
+bar(period(1:end),100.*sp_analytical(1:end),'linewidth',8,'edgecolor',rgb('darkgrey'),'facecolor',rgb('darkgrey'),'barwidth',1)
 xlabel('Periodicity in quarters','FontName','Times','FontSize',14,'interpreter','latex')
 ylabel('Share of total variance (\%)','FontName','Times','FontSize',14,'interpreter','latex')
 set(gca,'FontName','Times','FontSize',14)
 axis([2 300 -Inf Inf])
 pbaspect([2 1 1])
 if pprint==1;print -dpng SpectrumAR1;end
-
 
 
 
